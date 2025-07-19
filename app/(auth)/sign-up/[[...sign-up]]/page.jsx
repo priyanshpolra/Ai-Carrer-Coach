@@ -5,7 +5,7 @@ const Page = () => {
     return (
         <div>
             <SignUp/>
-            </div>
+        </div>
     )
 }
 
