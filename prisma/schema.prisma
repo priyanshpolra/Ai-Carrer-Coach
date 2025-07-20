@@ -105,16 +105,14 @@ model IndustryInsight {
   @@index([industry])
 }
 
-enum DemandLevel{
-  HIGH
-  MEDIUM
+enum DemandLevel {
   LOW
+  MEDIUM
+  HIGH
 }
 
-enum MarketOutlook{
+enum MarketOutlook {
   POSITIVE
   NEUTRAL
   NEGATIVE
 }
-
- 
