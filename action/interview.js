@@ -9,16 +9,19 @@ const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
 export async function generateQuiz() {
     const {userId} = await auth()
-        console.log("userId in updateUser:", userId)
-        if(!userId) throw new Error ("Unauthorized")
-    
-        const user = await db.user.findUnique({
-            where:{
-                clerkUserId: userId
-            }
-        })
-    
-        if(!user) throw new Error ("User not found")
+    console.log("userId in updateUser:", userId)
+    if(!userId) throw new Error ("Unauthorized")
+
+    const user = await db.user.findUnique({
+        where:{
+            clerkUserId: userId
+        }
+    })
+
+    if(!user) throw new Error ("User not found")
+    if (!user.industry) {
+        throw new Error("User industry not found");
+    }
 
     try {
         
@@ -146,13 +149,12 @@ export async function getAssessment(){
     if(!user) throw new Error ("User not found")
 
     try {
-        
         const assessments = await db.assessment.findMany({
             where:{
                 userId : user.id
             },
             orderBy:{
-                createAt:"asc"
+                createdAt:"asc"
             }
         })
 
