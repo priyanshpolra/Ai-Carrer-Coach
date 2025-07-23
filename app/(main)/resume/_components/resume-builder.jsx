@@ -15,7 +15,6 @@ import { entriesToMarkdown } from '@/app/lib/helper'
 import { useUser } from '@clerk/nextjs'
 import MDEditor from '@uiw/react-md-editor'
 import { toast } from 'sonner'
-import html2pdf from "html2pdf.js";
 
 
 
@@ -50,7 +49,7 @@ const ResumeBuilder = ({initialContent}) => {
     const formValues = watch()
 
     useEffect(() => {
-        if(initialContent) setActiveTab("Preview")
+        if(initialContent) setActiveTab("edit")
     },[initialContent])
 
     useEffect(() => {
